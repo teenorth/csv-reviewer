@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  api-testing:
+    container_name: api-testing
+    build:
+      context: ./
+      dockerfile: Dockerfile.testing
+    env_file:
+      - ./.env.testing
+    links:
+      - mongo-testing
+
+  mongo-testing:
+    image: mongo
+    command: mongod --quiet --logpath /dev/null
+    container_name: mongo-testing
+    logging:
+      driver: none
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password

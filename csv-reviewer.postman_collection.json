@@ -1,0 +1,486 @@
+{
+  "info": {
+    "_postman_id": "37e889db-049a-4394-bab0-80fc1ab6fa65",
+    "name": "csv-reviewer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30943043"
+  },
+  "item": [
+    {
+      "name": "rows",
+      "item": [
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"updates\": \r\n        {\r\n            \"firstname\": \"Taylor 123\"\r\n        }\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/rows/6504bb4f67bba3b6f58f505f",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "rows", "6504bb4f67bba3b6f58f505f"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"updates\": \r\n        {\r\n            \"firstname\": \"Taylor 123\"\r\n        }\r\n    \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/rows/6546efe2239d7a4f700a8844?history=true",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "rows", "6546efe2239d7a4f700a8844"],
+              "query": [
+                {
+                  "key": "history",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update many",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Updating names\",\r\n    \"updates\": [\r\n        {\r\n            \"_id\": \"6504bb4f67bba3b6f58f505f\",\r\n            \"firstname\": \"oawdawd\"\r\n        },\r\n        {\r\n            \"_id\": \"6504bb4f67bba3b6f58f5060\",\r\n            \"firstname\": \"oawdawdoawdawd\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/rows",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "rows"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "app",
+      "item": [
+        {
+          "name": "health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/app/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "app", "health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "batches",
+      "item": [
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/batches/1?include_rows=true",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "batches", "1"],
+              "query": [
+                {
+                  "key": "include_rows",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/batches",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "batches"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "reviews",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Testing review\",\r\n    \"updates\": [\r\n        {\r\n            \"_id\": \"6546e9059009bb6a740ef42a\",\r\n            \"firstname\": \"Testing review 1\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/reviews",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "reviews"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/reviews",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "reviews"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amendment\": {\r\n        \"message\": \"These where wrong\",\r\n        \"updates\": [\r\n            {\r\n                \"_id\": \"6547d8b312bf2186c3d8e6e9\",\r\n                \"lastname\": \"testing\"\r\n            }\r\n        ]\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/reviews/6547d91112bf2186c3d8ead1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "reviews", "6547d91112bf2186c3d8ead1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update approved",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"approved\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/reviews/6546c655a73ba572f95e9f0d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "reviews", "6546c655a73ba572f95e9f0d"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update committed",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"committed\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/reviews/6546ee21bd134b63f81d936d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "reviews", "6546ee21bd134b63f81d936d"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amendment\": {\r\n        \"message\": \"These where wrong\",\r\n        \"updates\": [\r\n            {\r\n                \"_id\": \"6504bb4f67bba3b6f58f505f\",\r\n                \"firstname\": \"Testing review 1 000\"\r\n            },\r\n            {\r\n                \"_id\": \"6504bb4f67bba3b6f58f5060\",\r\n                \"firstname\": \"Testing review 2 000\"\r\n            }\r\n        ]\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/reviews/6546c655a73ba572f95e9f0d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "reviews", "6546c655a73ba572f95e9f0d"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "tables",
+      "item": [
+        {
+          "name": "import csv",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Table 1",
+                  "type": "text"
+                },
+                {
+                  "key": "csv_file",
+                  "type": "file",
+                  "src": "///wsl.localhost/Debian/home/teno/repos/csv-reviewer/backend-csv/dummy-data.csv"
+                },
+                {
+                  "key": "timeline_title",
+                  "value": "My Tables",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "My table description",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/tables/import-csv",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "tables", "import-csv"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "rows",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/tables/6546efe2239d7a4f700a8843/rows",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "tables", "6546efe2239d7a4f700a8843", "rows"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "timelines",
+      "item": [
+        {
+          "name": "snapshot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Table 2\",\r\n    \"description\": \"My second table\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/timelines/6546e8dd9009bb6a740ef03f/snapshot",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "timelines", "6546e8dd9009bb6a740ef03f", "snapshot"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/timelines",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "timelines"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "tables",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/1.0/timelines/6546e8dd9009bb6a740ef03f/tables",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "1.0", "timelines", "6546e8dd9009bb6a740ef03f", "tables"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
