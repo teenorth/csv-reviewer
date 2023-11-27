@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend-csv:
+    build: ./
+    container_name: backend-csv
+    restart: unless-stopped
+    links:
+      - mongo
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/app
+    healthcheck:
+      test: curl -f http://localhost:5000/api/1.0/app/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: csv-reviewer
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
+
