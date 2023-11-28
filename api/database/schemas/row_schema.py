@@ -20,7 +20,7 @@ class RowModel:
 
 
 class RowSchema(Schema):
-    _id = m_fields.String(required=True)
+    _id = m_fields.String()
     base_id = m_fields.String()
     table_id = m_fields.String(required=True)
     timeline_id = m_fields.String(required=True)

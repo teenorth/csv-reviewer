@@ -39,4 +39,6 @@ def update_many():
 def insert_one():
     data = request.json
     row_repo = RowRepository()
-    row_repo.insert_one(data)
+    row_model = row_repo.insert_one(data)
+
+    return api_response(message="Successful", data=row_model)
