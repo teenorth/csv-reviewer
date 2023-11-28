@@ -4,7 +4,7 @@ from api import database as db, Api
 from api.middleware import jwt_required, request_schema
 from flask import send_file, Response
 from io import BytesIO
-from .schemas import CreateReview
+from .schemas import CreateReview, UpdateReview
 
 
 reviews = Blueprint("reviews", __name__, url_prefix="/reviews")
@@ -34,6 +34,7 @@ def create():
 
 @reviews.route("/<string:review_id>", methods=["PUT"])
 @jwt_required
+@request_schema(UpdateReview)
 def update(review_id):
     data = request.json
     result = db.review.update(

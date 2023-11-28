@@ -10,3 +10,15 @@ class RowUpdate(Schema):
 class CreateReview(Schema):
     message = String(required=True)
     updates = List(Nested(RowUpdate))
+
+
+class ReviewAmendment(Schema):
+    message = String(required=True)
+    updates = List(Nested(RowUpdate))
+
+
+class UpdateReview(Schema):
+    message = String()
+    amendment = Nested(ReviewAmendment)
+    approved = Boolean()
+    committed = Boolean()
