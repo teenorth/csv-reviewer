@@ -28,5 +28,5 @@ pip freeze > requirements.txt
 Install packages:
 
 ```bash
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
