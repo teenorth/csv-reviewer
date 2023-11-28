@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 import logging
 from . import row, user
 from datetime import datetime
-from api.util.errors import ReviewCommitted
+from api.errors import ReviewCommitted
 from api.util import get_user_id
 import logging
 import copy
@@ -75,7 +75,7 @@ def create(message="", updates=[]):
         "comment_ids": [],
         "row_ids": row_ids,
         "timeline_id": old_row["timeline_id"],
-        "user": {"_id": found_user['_id'], "username": found_user['username']},
+        "user": {"_id": found_user["_id"], "username": found_user["username"]},
         "created_at": datetime.now(),
     }
 
@@ -125,7 +125,7 @@ def update(
         update_data["$set"] = {"rows": current_rows}
 
     if comment_ids:
-        push_pull_to_array(update_data, 'comment_ids', comment_ids)
+        push_pull_to_array(update_data, "comment_ids", comment_ids)
 
     if approved is not None:
         update_data["$set"] = {"approved": approved}
@@ -188,10 +188,10 @@ def export_as_csv(object_id=None):
 
     csv_data = []
 
-    for row in found['rows'].values():
+    for row in found["rows"].values():
         if not len(csv_data):
-            csv_data.append(list(row['new']['fields'].keys()))
-        csv_data.append(list(row['new']['fields'].values()))
+            csv_data.append(list(row["new"]["fields"].keys()))
+        csv_data.append(list(row["new"]["fields"].values()))
 
     csv_buffer = StringIO()
     csv_writer = csv.writer(csv_buffer, quoting=csv.QUOTE_ALL)
@@ -209,5 +209,5 @@ def create_amendment(message="", before={}, after={}):
         "before": before,
         "after": after,
         "created_at": current_datetime,
-        "user": {"_id": found_user['_id'], "username": found_user['username']},
+        "user": {"_id": found_user["_id"], "username": found_user["username"]},
     }
