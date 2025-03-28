@@ -8,7 +8,7 @@ import logging
 import os
 import importlib
 from flask_bcrypt import Bcrypt
-from api.errors import handle_api_exception, ApiExceptionBase
+from api.errors import handle_api_exception, handle_500_exception, ApiExceptionBase
 
 logging.basicConfig(
     level=logging.INFO,
@@ -54,6 +54,7 @@ class Api:
         self._app.url_map.strict_slashes = False
 
         self._app.register_error_handler(ApiExceptionBase, handle_api_exception)
+        self._app.register_error_handler(500, handle_500_exception)
 
         self.__import_routes_from_directory()
 

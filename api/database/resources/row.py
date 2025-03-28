@@ -42,6 +42,9 @@ def show(object_id=None, history=False):
     if not root:
         raise DocumentNotFound
 
+    test = {}
+    test["key"]
+
     if history:
         row_history = []
         document = root
